@@ -1,0 +1,25 @@
+//
+//  zwProfix.pch
+//  实现缓存例子
+//
+//  Created by rayootech on 16/6/22.
+//  Copyright © 2016年 rayootech. All rights reserved.
+//
+
+#ifndef zwProfix_pch
+#define zwProfix_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+//空值判断
+static inline BOOL IsEmptyValue(id thing) {
+    return thing == nil
+    || ([thing respondsToSelector:@selector(length)]
+        && [(NSData *)thing length] == 0)
+    || ([thing respondsToSelector:@selector(count)]
+        && [(NSArray *)thing count] == 0)
+    ||  ([thing isKindOfClass:[NSNull class]]);
+}
+#endif
+
+#endif /* zwProfix_pch */
